@@ -12,6 +12,7 @@ using Castle.Windsor;
 using Castle.Windsor.Configuration.Interpreters;
 using log4net;
 using log4net.Config;
+using System.Collections.Generic;
 
 namespace SQL2008Import
 {
@@ -21,6 +22,9 @@ namespace SQL2008Import
 
         static void Main( string[] args )
         {
+            string[] prefixes = new string[] { "/f$", "/t$", "/o$" };
+            CmdArgExtractor cae = new CmdArgExtractor( prefixes, '/', '$' );
+
             WindsorContainer container = new WindsorContainer( new XmlInterpreter() );
             XmlConfigurator.Configure();
 
@@ -32,8 +36,39 @@ namespace SQL2008Import
             sqlConnection.Open();
             SQL2008Database sqlDatabase = new SQL2008Database( connStr.ConnectionString );
 
-            Console.WriteLine( "Please enter the shapefile path to import:" );
-            string inputShapeFile = Console.ReadLine();
+            if( ( args.Length != 0 ) && ( args[ 0 ].Contains( "?" ) ) )
+            {
+                Console.WriteLine( "Please use the /f$ option to specify the shapefile path" );
+                Console.WriteLine( "(OPTIONAL) the /t$ option to specify a table name. If not specified, the name of the shapefile will be used as the table name." );
+                Console.WriteLine( "(OPTIONAL) the /o$ option to specify whether to overwrite (Y/N) if a table with the same name exists. If not specified, the existing table will not be overwritten and the import will be aborted." );
+                return;
+            }
+
+            //if( !cae.ValidArgsPrefixes( args ) )
+            //{
+            //    Console.WriteLine( "Invalid parameters specified." );
+            //    Console.WriteLine( "" );
+            //    Console.WriteLine( "Please use the /f: option to specify the shapefile path" );
+            //    Console.WriteLine( "(OPTIONAL) the /t: option to specify a table name. If not specified, the name of the shapefile will be used as the table name." );
+            //    Console.WriteLine( "(OPTIONAL) the /o: option to specify whether to overwrite if a table with the same name exists. If not specified, the existing table will not be overwritten and the import will be aborted." );
+            //    return;
+            //}
+
+            string[ , ] inputParameters = cae.GetArgsTwoDimArray( args );
+
+            Dictionary<string, string> inputParams = new Dictionary<string, string>();
+            for( int i = 0; i < args.Length; i++ )
+            {
+                inputParams.Add( inputParameters[ 0, i ].ToLower(), inputParameters[ 1, i ].ToLower() );
+            }
+
+            if( !inputParams.ContainsKey( "f" ) )
+            {
+                Console.WriteLine( "A shapefile path must be specified to continue." );
+                return;
+            }
+
+            string inputShapeFile = inputParams["f"];
 
             if( !File.Exists( inputShapeFile ) )
             {
@@ -48,18 +83,24 @@ namespace SQL2008Import
             shapefile = Path.GetFileNameWithoutExtension(inputShapeFile);
             string tableName = shapefile;
 
-            if( sqlDatabase.ContainsTable( shapefile ) )
+            if( inputParams.ContainsKey( "t" ) )
             {
-                Console.WriteLine( "A table with the same name '" + shapefile + "' already exists in the database." );
-                Console.WriteLine( "Please enter a new name for the table:" );
-                string input = Console.ReadLine();
-                if( string.Compare( input, shapefile, true ) == 0 )
+                tableName = inputParams[ "t" ];
+            }
+
+            if( sqlDatabase.ContainsTable( tableName ) )
+            {
+                Console.WriteLine( "A table with the same name '" + tableName + "' already exists in the database." );
+                if( inputParams.ContainsKey( "o" ) && ((inputParams["o"] == "y") || (inputParams["o"] == "yes")))
                 {
-                    Console.WriteLine( "A table with the specified name cannot be created." );
-                    return;
+                    Console.WriteLine( "Deleting the existing table and creating a new table." );
+                    sqlDatabase.DeleteTable( tableName );
                 }
                 else
-                    tableName = input;
+                {
+                    Console.WriteLine( "Aborting import." );
+                    return;
+                }
             }
 
             IWorkspace workspace = GeodatabaseUtil.GetShapefileWorkspace( shapefileDirectory );
