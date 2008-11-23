@@ -33,15 +33,15 @@
   <ItemGroup>
     <Reference Include="GeoAPI, Version=1.1.0.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\GeoAPI.dll</HintPath>
+      <HintPath>..\lib\NetTopologySuite\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\Jayrock.dll</HintPath>
+      <HintPath>..\lib\JayRock\Jayrock.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock.Json, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\Jayrock.Json.dll</HintPath>
+      <HintPath>..\lib\JayRock\Jayrock.Json.dll</HintPath>
     </Reference>
     <Reference Include="MbUnit.Framework, Version=1.0.2700.29885, Culture=neutral, PublicKeyToken=5e72ecd30bc408d5">
       <SpecificVersion>False</SpecificVersion>
@@ -53,11 +53,7 @@
     </Reference>
     <Reference Include="NetTopologySuite, Version=1.7.3.16791, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\NetTopologySuite.dll</HintPath>
-    </Reference>
-    <Reference Include="ProjNET, Version=1.1.2854.24700, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\ProjNET.dll</HintPath>
+      <HintPath>..\lib\NetTopologySuite\NetTopologySuite.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
