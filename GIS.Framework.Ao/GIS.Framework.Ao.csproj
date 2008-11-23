@@ -36,19 +36,19 @@
     <Reference Include="ESRI.ArcGIS.System, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="GeoAPI, Version=1.1.0.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\GeoAPI.dll</HintPath>
+      <HintPath>..\lib\NetTopologySuite\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\Jayrock.dll</HintPath>
+      <HintPath>..\lib\JayRock\Jayrock.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock.Json, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\Jayrock.Json.dll</HintPath>
+      <HintPath>..\lib\JayRock\Jayrock.Json.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite, Version=1.7.3.16791, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GIS.Framework\lib\NetTopologySuite.dll</HintPath>
+      <HintPath>..\lib\NetTopologySuite\NetTopologySuite.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
