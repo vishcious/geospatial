@@ -1,0 +1,1 @@
+.\tools\Nant\Nant.exe %1

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="GIS" default="build" basedir=". " xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd">
+  <description>GIS Framework</description>
+  <property name="nant.settings.currentframework" value="net-3.5" />
+  <property name="debug" value="true" />
+  <property name="build.dir" value="build" />
+  <property name="lib" value="lib"/>
+  <property name="ESRI.dir" value="C:\Program Files\ArcGIS\DotNet"/>
+  <echo message="build.dir: ${build.dir}" />
+  <echo message="debug: ${debug}" />
+  <echo message="library folder: ${lib}"/>
+  <echo message="ESRI.dir: ${ESRI.dir}"/>
+
+  <target name="init">
+    <mkdir dir="${build.dir}" />
+  </target>
+
+  <target name="clean" description="remove all generated files">
+    <delete dir="${build.dir}" failonerror="false" />
+    <delete>
+      <fileset basedir="${build.dir}">
+        <include name="*.*" />
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="build" description="debug build (default)" depends="clean,init">
+    
+    <csc target="library"
+    output="${build.dir}\GIS.Framework.dll"
+    debug="${debug}"
+    failonerror="true">
+      <sources basedir="GIS.Framework">
+        <include name="**/*.cs" />
+      </sources>
+      <references basedir="lib">
+        <include name="System.dll" />
+        <include name="Syste.Core.dll"/>
+        <include name="System.Data.dll" />
+        <include name="System.Data.DataSetExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
+        <include name="./JayRock/JayRock.dll" />
+        <include name="./JayRock/JayRock.Json.dll" />
+        <include name="./NetTopologySuite/GeoAPI.dll"/>
+        <include name="./NetTopologySuite/NetTopologySuite.dll"/>
+      </references>
+    </csc>
+
+    <csc target="library"
+         output="${build.dir}/GIS.ArcGIS.dll"
+         debug="${debug}"
+         failonerror="true">
+      <sources basedir="GIS.ArcGIS">
+        <include name="**/*.cs"/>
+      </sources>
+      <references basedir="${lib}">
+        <include name="./NetTopologySuite/GeoAPI.dll"/>
+        <include name="./NetTopologySuite/NetTopologySuite.dll"/>
+        <include name="../${build.dir}/GIS.Framework.dll"/>
+        <include name="System.dll" />
+        <include name="Syste.Core.dll"/>
+        <include name="System.Data.dll" />
+        <include name="System.Data.DataSetExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
+        <include name="System.Drawing"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.ADF.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.ADF.Web.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.Carto.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.DataSourcesFile.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.DataSourcesGDB.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.Display.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.Geodatabase.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.GeoDatabaseDistributed.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.Geometry.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.System.dll"/>
+      </references>
+    </csc>
+
+    <csc target="library"
+         output="${build.dir}/GIS.SQL2008.dll"
+         debug="${debug}"
+         failonerror="true">
+      <sources basedir="GIS.SQL2008">
+        <include name="**/*.cs"/>
+      </sources>
+      <references basedir="${lib}">
+        <include name="./NetTopologySuite/GeoAPI.dll"/>
+        <include name="./NetTopologySuite/NetTopologySuite.dll"/>
+        <include name="./SQL2008/Microsoft.SqlServer.ConnectionInfo.dll"/>
+        <include name="./SQL2008/Microsoft.SqlServer.Management.Sdk.Sfc.dll"/>
+        <include name="./SQL2008/Microsoft.SqlServer.Smo.dll"/>
+        <include name="./SQL2008/Microsoft.SqlServer.Types.dll"/>
+        <include name="System.dll" />
+        <include name="Syste.Core.dll"/>
+        <include name="System.Data.dll" />
+        <include name="System.Data.DataSetExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
+        <include name="System.Drawing"/>
+        <include name="../${build.dir}/GIS.Framework.dll"/>
+      </references>
+    </csc>
+
+    <csc target="library"
+         output="${build.dir}/GIS.Framework.Ao.dll"
+         debug="${debug}"
+         failonerror="true">
+      <sources basedir="GIS.Framework.Ao">
+        <include name="**/*.cs"/>
+      </sources>
+      <references basedir="${lib}">
+        <include name="./JayRock/JayRock.dll" />
+        <include name="./JayRock/JayRock.Json.dll" />
+        <include name="./NetTopologySuite/GeoAPI.dll"/>
+        <include name="./NetTopologySuite/NetTopologySuite.dll"/>
+        <include name="System.dll" />
+        <include name="Syste.Core.dll"/>
+        <include name="System.Data.dll" />
+        <include name="System.Data.DataSetExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
+        <include name="../${build.dir}/GIS.Framework.dll"/>
+        <include name="../${build.dir}/GIS.ArcGIS.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.Geodatabase.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.Geometry.dll"/>
+        <include name="${ESRI.dir}/ESRI.ArcGIS.System.dll"/>
+      </references>
+    </csc>
+
+    <csc target="library"
+         output="${build.dir}/GIS.Framework.SQL2008.dll"
+         debug="${debug}"
+         failonerror="true">
+      <sources basedir="GIS.Framework.SQL2008">
+        <include name="**/*.cs"/>
+      </sources>
+      <references basedir="${lib}">
+        <include name="./JayRock/JayRock.dll" />
+        <include name="./JayRock/JayRock.Json.dll" />
+        <include name="./NetTopologySuite/GeoAPI.dll"/>
+        <include name="./NetTopologySuite/NetTopologySuite.dll"/>
+        <include name="./SQL2008/Microsoft.SqlServer.Types.dll"/>
+        <include name="System.dll" />
+        <include name="Syste.Core.dll"/>
+        <include name="System.Data.dll" />
+        <include name="System.Data.DataSetExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
+        <include name="System.Drawing"/>
+        <include name="../${build.dir}/GIS.Framework.dll"/>
+        <include name="../${build.dir}/GIS.SQL2008.dll"/>
+      </references>
+    </csc>
+
+    <copy todir="${build.dir}">
+      <fileset basedir="${lib}/JayRock">
+        <include name="*.*"/>
+      </fileset>
+    </copy>
+
+    <copy todir="${build.dir}">
+      <fileset basedir="${lib}/SQL2008">
+        <include name="*.*"/>
+      </fileset>
+    </copy>
+
+    <copy todir="${build.dir}">
+      <fileset basedir="${lib}/NetTopologySuite">
+        <include name="*.*"/>
+      </fileset>
+    </copy>
+    
+  </target>
+
+</project>
