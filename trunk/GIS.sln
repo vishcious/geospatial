@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Framework", "GIS.Framework\GIS.Framework.csproj", "{41862598-4282-440D-8C33-F49D147A1158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Framework.Ao", "GIS.Framework.Ao\GIS.Framework.Ao.csproj", "{FA2960CC-A867-49A1-90BD-F37E78FCCBDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Framework.SQL2008", "GIS.Framework.SQL2008\GIS.Framework.SQL2008.csproj", "{AC79ABF2-097D-4E24-94B4-53C89FC7D121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.ArcGIS", "GIS.ArcGIS\GIS.ArcGIS.csproj", "{104EFC4D-F228-48E6-8533-7C1E34B116D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.ArcGIS.UnitTests", "GIS.ArcGIS.UnitTests\GIS.ArcGIS.UnitTests.csproj", "{D3262C2F-2790-499F-9ACC-75B5FCA010F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Framework.Ao.UnitTests", "GIS.Framework.Ao.UnitTests\GIS.Framework.Ao.UnitTests.csproj", "{D1235E98-B589-4028-AC0E-EEE618940814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Framework.SQL2008.UnitTests", "GIS.Framework.SQL2008.UnitTests\GIS.Framework.SQL2008.UnitTests.csproj", "{BCDFA0FF-BF8C-4B7A-9D78-19C6C323ADC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.SQL2008", "GIS.SQL2008\GIS.SQL2008.csproj", "{94A39B27-86AB-4EDC-B14B-F44FD987E294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.SQL2008.Tests", "GIS.SQL2008.Tests\GIS.SQL2008.Tests.csproj", "{BF1F07DA-DD3B-4BBB-BFA8-86909E79F8C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{3E8F4EED-07B0-445B-A021-42FE239D8671}"
+	ProjectSection(SolutionItems) = preProject
+		gis.build = gis.build
+		go.bat = go.bat
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL2008Import", "SQL2008Import\SQL2008Import.csproj", "{8662642D-FE90-48DB-A2BC-098A0DE12877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Framework.FDO", "GIS.Framework.FDO\GIS.Framework.FDO.csproj", "{0EF2275A-03BB-4298-97EC-03846EEFDD8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.FDO", "GIS.FDO\GIS.FDO.csproj", "{D3B82FC9-A8BC-45B0-8FE4-4E435122D23F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41862598-4282-440D-8C33-F49D147A1158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41862598-4282-440D-8C33-F49D147A1158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41862598-4282-440D-8C33-F49D147A1158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41862598-4282-440D-8C33-F49D147A1158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2960CC-A867-49A1-90BD-F37E78FCCBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2960CC-A867-49A1-90BD-F37E78FCCBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2960CC-A867-49A1-90BD-F37E78FCCBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2960CC-A867-49A1-90BD-F37E78FCCBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC79ABF2-097D-4E24-94B4-53C89FC7D121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC79ABF2-097D-4E24-94B4-53C89FC7D121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC79ABF2-097D-4E24-94B4-53C89FC7D121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC79ABF2-097D-4E24-94B4-53C89FC7D121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104EFC4D-F228-48E6-8533-7C1E34B116D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104EFC4D-F228-48E6-8533-7C1E34B116D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104EFC4D-F228-48E6-8533-7C1E34B116D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104EFC4D-F228-48E6-8533-7C1E34B116D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3262C2F-2790-499F-9ACC-75B5FCA010F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3262C2F-2790-499F-9ACC-75B5FCA010F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3262C2F-2790-499F-9ACC-75B5FCA010F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3262C2F-2790-499F-9ACC-75B5FCA010F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1235E98-B589-4028-AC0E-EEE618940814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1235E98-B589-4028-AC0E-EEE618940814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1235E98-B589-4028-AC0E-EEE618940814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1235E98-B589-4028-AC0E-EEE618940814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDFA0FF-BF8C-4B7A-9D78-19C6C323ADC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDFA0FF-BF8C-4B7A-9D78-19C6C323ADC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDFA0FF-BF8C-4B7A-9D78-19C6C323ADC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDFA0FF-BF8C-4B7A-9D78-19C6C323ADC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A39B27-86AB-4EDC-B14B-F44FD987E294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A39B27-86AB-4EDC-B14B-F44FD987E294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A39B27-86AB-4EDC-B14B-F44FD987E294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A39B27-86AB-4EDC-B14B-F44FD987E294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF1F07DA-DD3B-4BBB-BFA8-86909E79F8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF1F07DA-DD3B-4BBB-BFA8-86909E79F8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF1F07DA-DD3B-4BBB-BFA8-86909E79F8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF1F07DA-DD3B-4BBB-BFA8-86909E79F8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8662642D-FE90-48DB-A2BC-098A0DE12877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8662642D-FE90-48DB-A2BC-098A0DE12877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8662642D-FE90-48DB-A2BC-098A0DE12877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8662642D-FE90-48DB-A2BC-098A0DE12877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF2275A-03BB-4298-97EC-03846EEFDD8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF2275A-03BB-4298-97EC-03846EEFDD8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF2275A-03BB-4298-97EC-03846EEFDD8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF2275A-03BB-4298-97EC-03846EEFDD8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B82FC9-A8BC-45B0-8FE4-4E435122D23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B82FC9-A8BC-45B0-8FE4-4E435122D23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B82FC9-A8BC-45B0-8FE4-4E435122D23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B82FC9-A8BC-45B0-8FE4-4E435122D23F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

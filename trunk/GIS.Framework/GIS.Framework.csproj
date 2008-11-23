@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41862598-4282-440D-8C33-F49D147A1158}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GIS.Framework</RootNamespace>
+    <AssemblyName>GIS.Framework</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GeoAPI, Version=1.1.0.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\lib\NetTopologySuite\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Jayrock, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
+      <HintPath>..\lib\JayRock\Jayrock.dll</HintPath>
+    </Reference>
+    <Reference Include="Jayrock.Json, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
+      <HintPath>..\lib\JayRock\Jayrock.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=1.7.3.16791, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\lib\NetTopologySuite\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DefaultGeometryFactory.cs" />
+    <Compile Include="GeoJSONReader.cs" />
+    <Compile Include="GeoJSONWriter.cs" />
+    <Compile Include="GeometryCollectionFeature.cs" />
+    <Compile Include="GeoXMLWriter.cs" />
+    <Compile Include="GISFeature.cs" />
+    <Compile Include="GISSerializableDictionary.cs" />
+    <Compile Include="IAttributeFields.cs" />
+    <Compile Include="IGeometryCollectionFeature.cs" />
+    <Compile Include="IGeometryFactory.cs" />
+    <Compile Include="IGISAttributes.cs" />
+    <Compile Include="IGISEditableLayer.cs" />
+    <Compile Include="IGISFeature.cs" />
+    <Compile Include="IGISFields.cs" />
+    <Compile Include="IGISJSONReadable.cs" />
+    <Compile Include="IGISJSONSerializable.cs" />
+    <Compile Include="IGISLayer.cs" />
+    <Compile Include="IGISXMLReadable.cs" />
+    <Compile Include="ILinearRingFeature.cs" />
+    <Compile Include="ILineStringFeature.cs" />
+    <Compile Include="IMultiLineStringFeature.cs" />
+    <Compile Include="IMultiPointFeature.cs" />
+    <Compile Include="IMultiPolygonFeature.cs" />
+    <Compile Include="IPointFeature.cs" />
+    <Compile Include="IGISXMLSerializable.cs" />
+    <Compile Include="IPolygonFeature.cs" />
+    <Compile Include="ISupportsGISFields.cs" />
+    <Compile Include="ISupportsSRID.cs" />
+    <Compile Include="Mem\Layers\MemGISFeatureFinder.cs" />
+    <Compile Include="Mem\Features\MemFeature.cs" />
+    <Compile Include="Mem\Features\MemGeometryCollectionFeature.cs" />
+    <Compile Include="Mem\Layers\MemGISLayer.cs" />
+    <Compile Include="Mem\Features\MemLinearRingFeature.cs" />
+    <Compile Include="Mem\Features\MemLineStringFeature.cs" />
+    <Compile Include="Mem\Features\MemMultiLineStringFeature.cs" />
+    <Compile Include="Mem\Features\MemMultiPointFeature.cs" />
+    <Compile Include="Mem\Features\MemMultiPolygonFeature.cs" />
+    <Compile Include="Mem\Layers\MemLinearRingLayer.cs" />
+    <Compile Include="Mem\Layers\MemMultiLineStringLayer.cs" />
+    <Compile Include="Mem\Layers\MemMultiPointLayer.cs" />
+    <Compile Include="Mem\Layers\MemMultiPolygonLayer.cs" />
+    <Compile Include="Mem\Features\MemPointFeature.cs" />
+    <Compile Include="Mem\Layers\MemPointLayer.cs" />
+    <Compile Include="Mem\Features\MemPolygonFeature.cs" />
+    <Compile Include="Mem\Layers\MemLineStringLayer.cs" />
+    <Compile Include="Mem\Layers\MemPolygonLayer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializableDictionary.cs" />
+    <Compile Include="SerializableDictionaryBase.cs" />
+    <Compile Include="WKIDRanges.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataTable\Features\" />
+    <Folder Include="DataTable\Layers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
