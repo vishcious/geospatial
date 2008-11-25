@@ -142,6 +142,7 @@ namespace ArcToSQL2008
         public override void OnClick()
         {
             string connectionString = null;
+            string tableName = "ArcToSQL2008";
             
             try
             {
@@ -152,6 +153,7 @@ namespace ArcToSQL2008
                 if( dialog.ShowDialog() == DialogResult.OK )
                 {
                     connectionString = dialog.ConnectionString;
+                    tableName = dialog.TableName;
                 }
                 else
                 {
@@ -196,7 +198,7 @@ namespace ArcToSQL2008
 
                         System.Collections.IDictionary parameters = new System.Collections.Hashtable();
                         parameters.Add( "featureClass", featureClass );
-                        parameters.Add( "layerName", "ArcToSQL2008" );
+                        parameters.Add( "layerName", tableName );
                         parameters.Add( "keyFieldName", featureClass.OIDFieldName );
                         AoFCLayer shapeFileLayer = container.Resolve<AoFCLayer>( "Ao" + geometryType, parameters );
 
@@ -206,11 +208,11 @@ namespace ArcToSQL2008
                             return;
                         }
 
-                        if( sqlDatabase.ContainsTable( "ArcToSQL2008" ) )
+                        if( sqlDatabase.ContainsTable( tableName ) )
                         {
                             if( MessageBox.Show( "Overwrite existing table?", "Overwrite", MessageBoxButtons.YesNo ) == DialogResult.Yes )
                             {
-                                sqlDatabase.DeleteTable( "ArcToSQL2008" );
+                                sqlDatabase.DeleteTable( tableName );
                             }
                             else
                             {
@@ -231,24 +233,24 @@ namespace ArcToSQL2008
                         IGISLayer sql2008Layer = null;
                         //Create the dictionary with the parameters to create the corresponding SQL 2008 layer
                         System.Collections.IDictionary sqlParameters = new System.Collections.Hashtable();
-                        sqlParameters.Add( "tableName", "ArcToSQL2008" );
+                        sqlParameters.Add( "tableName", tableName );
                         sqlParameters.Add( "shapeFieldName", "SHAPE" );
-                        sqlParameters.Add( "layerName", "ArcToSQL2008" );
+                        sqlParameters.Add( "layerName", tableName );
                         sqlParameters.Add( "keyFieldName", featureClass.OIDFieldName );
 
                         if( srid.HasValue && WKIDRanges.IsGeographic( srid.Value ) )
                         {
                             //Create the geography table with the fields from the FeatureClass
-                            sqlDatabase.CreateGeographyTable( inputFields, "ArcToSQL2008", "SHAPE" );
-                            sqlCommand = new SqlCommand( "Select * from " + "ArcToSQL2008", sqlConnection );
+                            sqlDatabase.CreateGeographyTable( inputFields, tableName, "SHAPE" );
+                            sqlCommand = new SqlCommand( "Select * from " + tableName, sqlConnection );
                             sqlParameters.Add( "dbCommand", sqlCommand );
                             sql2008Layer = container.Resolve<IGISLayer>( "Sql2008Geog" + geometryType, sqlParameters );
                         }
                         else
                         {
                             //Create the geometry table with the fields from the FeatureClass
-                            sqlDatabase.CreateGeometryTable( inputFields, "ArcToSQL2008", "SHAPE" );
-                            sqlCommand = new SqlCommand( "Select * from " + "ArcToSQL2008", sqlConnection );
+                            sqlDatabase.CreateGeometryTable( inputFields, tableName, "SHAPE" );
+                            sqlCommand = new SqlCommand( "Select * from " + tableName, sqlConnection );
                             sqlParameters.Add( "dbCommand", sqlCommand );
                             sql2008Layer = container.Resolve<IGISLayer>( "Sql2008Geom" + geometryType, sqlParameters );
                         }

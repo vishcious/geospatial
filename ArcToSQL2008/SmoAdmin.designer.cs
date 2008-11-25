@@ -42,6 +42,8 @@ namespace ArcToSQL2008
             this.cboDatabase = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btn_OK = new System.Windows.Forms.Button();
+            this.txtTableName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpDatabase.SuspendLayout();
             this.SuspendLayout();
@@ -133,11 +135,13 @@ namespace ArcToSQL2008
             // 
             // grpDatabase
             // 
+            this.grpDatabase.Controls.Add( this.label5 );
+            this.grpDatabase.Controls.Add( this.txtTableName );
             this.grpDatabase.Controls.Add( this.label4 );
             this.grpDatabase.Controls.Add( this.cboDatabase );
             this.grpDatabase.Location = new System.Drawing.Point( 13, 150 );
             this.grpDatabase.Name = "grpDatabase";
-            this.grpDatabase.Size = new System.Drawing.Size( 412, 55 );
+            this.grpDatabase.Size = new System.Drawing.Size( 412, 85 );
             this.grpDatabase.TabIndex = 2;
             this.grpDatabase.TabStop = false;
             // 
@@ -163,7 +167,7 @@ namespace ArcToSQL2008
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point( 335, 218 );
+            this.btnClose.Location = new System.Drawing.Point( 335, 256 );
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size( 75, 23 );
             this.btnClose.TabIndex = 9;
@@ -174,7 +178,7 @@ namespace ArcToSQL2008
             // btn_OK
             // 
             this.btn_OK.Enabled = false;
-            this.btn_OK.Location = new System.Drawing.Point( 235, 218 );
+            this.btn_OK.Location = new System.Drawing.Point( 235, 256 );
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size( 75, 23 );
             this.btn_OK.TabIndex = 10;
@@ -182,11 +186,28 @@ namespace ArcToSQL2008
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler( this.btn_OK_Click );
             // 
+            // txtTableName
+            // 
+            this.txtTableName.Location = new System.Drawing.Point( 113, 53 );
+            this.txtTableName.Name = "txtTableName";
+            this.txtTableName.Size = new System.Drawing.Size( 284, 20 );
+            this.txtTableName.TabIndex = 2;
+            this.txtTableName.TextChanged += new System.EventHandler( this.txtTableName_TextChanged );
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point( 14, 53 );
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size( 79, 13 );
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Export to Table";
+            // 
             // SmoAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 13F );
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size( 436, 261 );
+            this.ClientSize = new System.Drawing.Size( 436, 292 );
             this.Controls.Add( this.btn_OK );
             this.Controls.Add( this.btnClose );
             this.Controls.Add( this.grpDatabase );
@@ -218,5 +239,7 @@ namespace ArcToSQL2008
         private System.Windows.Forms.ComboBox cboDatabase;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btn_OK;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTableName;
     }
 }
