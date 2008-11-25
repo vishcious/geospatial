@@ -25,6 +25,11 @@ namespace ArcToSQL2008
             get;
             set;
         }
+        public string TableName
+        {
+            get;
+            set;
+        }
 
         private void SmoAdmin_Load(object sender, EventArgs e)
         {
@@ -74,6 +79,7 @@ namespace ArcToSQL2008
             {
                 Database db = smoHelper.Server.Databases[ cboDatabase.SelectedValue.ToString() ];
                 ConnectionString = smoHelper.Server.ConnectionContext.ConnectionString + ";Initial Catalog=" + db.Name;
+                TableName = txtTableName.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -85,9 +91,23 @@ namespace ArcToSQL2008
 
         private void cboDatabase_SelectedIndexChanged( object sender, EventArgs e )
         {
-            if( cboDatabase.SelectedIndex != -1 )
+            UpdateButtonStatus();
+        }
+
+        private void txtTableName_TextChanged( object sender, EventArgs e )
+        {
+            UpdateButtonStatus();
+        }
+
+        private void UpdateButtonStatus()
+        {
+            if( cboDatabase.SelectedIndex != -1 && !(string.IsNullOrEmpty(txtTableName.Text)))
             {
                 btn_OK.Enabled = true;
+            }
+            else
+            {
+                btn_OK.Enabled = false;
             }
         }
     }
