@@ -245,7 +245,7 @@ namespace GIS.SQL2008
             SqlGeometry geometry = null;
             if( feature.Shape != null )
             {
-                geometry = SqlGeometry.Parse( feature.Shape.ToString() );
+                geometry = SqlGeometry.Parse( wkt );
             }
             else
             {
