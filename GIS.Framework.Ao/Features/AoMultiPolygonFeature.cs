@@ -147,7 +147,7 @@ namespace GIS.Framework.Ao.Features
                 throw new ApplicationException("No segments found in the ring geometry.");
 
             list.Add(ConvertTo(fromToPoint));
-
+            list.Reverse();
             return new GisSharpBlog.NetTopologySuite.Geometries.LinearRing(list.ToArray());
         }
 
