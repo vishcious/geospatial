@@ -20,6 +20,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Castle.Core.Resource;
 using System.IO;
+using GIS.Framework.Ao.Layers;
 
 namespace ArcToSQL2008
 {
@@ -105,8 +106,30 @@ namespace ArcToSQL2008
 
                 string configFileName = Path.GetFileNameWithoutExtension( typeof( ArcToSQL2008 ).Assembly.Location ) + ".config";
                 string basePath = Path.GetDirectoryName( typeof( ArcToSQL2008 ).Assembly.Location );
-                container = new WindsorContainer( new XmlInterpreter( new FileResource( configFileName, basePath ) ) );
+                
+                //Configure the log4net component using the configuration file
                 XmlConfigurator.Configure(new FileInfo( Path.GetFileName(typeof(ArcToSQL2008).Assembly.Location) + ".config"));
+
+                //The components can also be read from a configuration file using the code below
+                //But I am prefering to not use the config file and adding all components in code
+                //container = new WindsorContainer( new XmlInterpreter( new FileResource( configFileName, basePath ) ) );
+
+                //Load all the components into the windsor container in code
+                container = new WindsorContainer();
+                container.AddComponent<AoFCLayer, AoPointFCLayer>( "AoPoint" );
+                container.AddComponent<AoFCLayer, AoMultiPointFCLayer>( "AoMultiPoint" );
+                container.AddComponent<AoFCLayer, AoPolygonFCLayer>( "AoMultiPolygon" );
+                container.AddComponent<AoFCLayer, AoPolylineFCLayer>( "AoMultiLineString" );
+
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeography.Layers.SQL2008GeogTableLayer, GIS.Framework.SQL2008.SQLGeography.Layers.PointLayer>( "Sql2008GeogPoint" );
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeography.Layers.SQL2008GeogTableLayer, GIS.Framework.SQL2008.SQLGeography.Layers.MultiPointLayer>( "Sql2008GeogMultiPoint" );
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeography.Layers.SQL2008GeogTableLayer, GIS.Framework.SQL2008.SQLGeography.Layers.MultiPolygonLayer>( "Sql2008GeogMultiPolygon" );
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeography.Layers.SQL2008GeogTableLayer, GIS.Framework.SQL2008.SQLGeography.Layers.MultiLineStringLayer>( "Sql2008GeogMultiLineString" );
+
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeometry.Layers.SQL2008GeomTableLayer, GIS.Framework.SQL2008.SQLGeometry.Layers.PointLayer>( "Sql2008GeomPoint" );
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeometry.Layers.SQL2008GeomTableLayer, GIS.Framework.SQL2008.SQLGeometry.Layers.MultiPointLayer>( "Sql2008GeomMultiPoint" );
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeometry.Layers.SQL2008GeomTableLayer, GIS.Framework.SQL2008.SQLGeometry.Layers.MultiPolygonLayer>( "Sql2008GeomMultiPolygon" );
+                container.AddComponent<GIS.Framework.SQL2008.SQLGeometry.Layers.SQL2008GeomTableLayer, GIS.Framework.SQL2008.SQLGeometry.Layers.MultiLineStringLayer>( "Sql2008GeomMultiLineString" );
             }
             catch( Exception ex )
             {
