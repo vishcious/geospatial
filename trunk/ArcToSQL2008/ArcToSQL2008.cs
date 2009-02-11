@@ -21,6 +21,9 @@ using System.Configuration;
 using Castle.Core.Resource;
 using System.IO;
 using GIS.Framework.Ao.Layers;
+using log4net.Repository.Hierarchy;
+using log4net.Appender;
+using log4net.Core;
 
 namespace ArcToSQL2008
 {
@@ -108,7 +111,11 @@ namespace ArcToSQL2008
                 string basePath = Path.GetDirectoryName( typeof( ArcToSQL2008 ).Assembly.Location );
                 
                 //Configure the log4net component using the configuration file
-                XmlConfigurator.Configure(new FileInfo( Path.GetFileName(typeof(ArcToSQL2008).Assembly.Location) + ".config"));
+                //But I am prefering to configure the log4net component as opposed to reading it from a config file.
+                //XmlConfigurator.Configure(new FileInfo( Path.GetFileName(typeof(ArcToSQL2008).Assembly.Location) + ".config"));
+
+                //Configure log4net in code
+                ConfigureLog4Net();
 
                 //The components can also be read from a configuration file using the code below
                 //But I am prefering to not use the config file and adding all components in code
@@ -135,6 +142,31 @@ namespace ArcToSQL2008
             {
                 System.Diagnostics.Trace.WriteLine( ex.Message, "Invalid Bitmap" );
             }
+        }
+
+        public void ConfigureLog4Net()
+        {
+            Logger root;
+            root = ( ( Hierarchy ) LogManager.GetRepository() ).Root;
+            root.AddAppender( GetRollingFileAppender() );
+            root.Level = Level.All;
+            root.Repository.Configured = true;
+        }
+
+        public IAppender GetRollingFileAppender()
+        {
+            RollingFileAppender lAppender = new RollingFileAppender();
+            lAppender.Name = "RollingFile";
+            lAppender.File = "ArcToSQL2008.log";
+            lAppender.AppendToFile = true;
+            lAppender.RollingStyle = RollingFileAppender.RollingMode.Size;
+            lAppender.MaxSizeRollBackups = 10;
+            lAppender.MaximumFileSize = "100KB";
+            lAppender.StaticLogFileName = true;
+            lAppender.Layout = new log4net.Layout.PatternLayout( "%date %-5level - %message%newline" );
+            lAppender.Threshold = log4net.Core.Level.All;
+            lAppender.ActivateOptions();
+            return lAppender;
         }
 
         #region Overriden Class Methods
