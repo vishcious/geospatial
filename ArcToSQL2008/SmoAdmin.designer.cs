@@ -44,6 +44,7 @@ namespace ArcToSQL2008
             this.cboDatabase = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btn_OK = new System.Windows.Forms.Button();
+            this._btnAbout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpDatabase.SuspendLayout();
             this.SuspendLayout();
@@ -204,17 +205,29 @@ namespace ArcToSQL2008
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler( this.btn_OK_Click );
             // 
+            // _btnAbout
+            // 
+            this._btnAbout.Location = new System.Drawing.Point( 13, 256 );
+            this._btnAbout.Name = "_btnAbout";
+            this._btnAbout.Size = new System.Drawing.Size( 75, 23 );
+            this._btnAbout.TabIndex = 11;
+            this._btnAbout.Text = "About";
+            this._btnAbout.UseVisualStyleBackColor = true;
+            this._btnAbout.Click += new System.EventHandler( this._btnAbout_Click );
+            // 
             // SmoAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 13F );
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size( 436, 292 );
+            this.Controls.Add( this._btnAbout );
             this.Controls.Add( this.btn_OK );
             this.Controls.Add( this.btnClose );
             this.Controls.Add( this.grpDatabase );
             this.Controls.Add( this.groupBox1 );
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SmoAdmin";
-            this.Text = "SmoAdmin";
+            this.Text = "Select SQL Database and Table to export FeatureClass to...";
             this.Load += new System.EventHandler( this.SmoAdmin_Load );
             this.groupBox1.ResumeLayout( false );
             this.groupBox1.PerformLayout();
@@ -242,5 +255,6 @@ namespace ArcToSQL2008
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTableName;
+        private System.Windows.Forms.Button _btnAbout;
     }
 }
