@@ -115,5 +115,11 @@ namespace ArcToSQL2008
                 btn_OK.Enabled = false;
             }
         }
+
+        private void _btnAbout_Click( object sender, EventArgs e )
+        {
+            AboutBox dialog = new AboutBox();
+            dialog.ShowDialog();
+        }
     }
 }

@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle( "ArcToSQL2008" )]
-[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyDescription( "An utility to export FeatureClasses to SQL Server 2008" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "Hewlett-Packard" )]
+[assembly: AssemblyCompany( "VishfulThinking" )]
 [assembly: AssemblyProduct( "ArcToSQL2008" )]
-[assembly: AssemblyCopyright( "Copyright © Hewlett-Packard 2008" )]
+[assembly: AssemblyCopyright( "Copyright © VishfulThinking 2008" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
