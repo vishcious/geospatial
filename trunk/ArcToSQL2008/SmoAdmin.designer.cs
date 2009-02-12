@@ -38,12 +38,12 @@ namespace ArcToSQL2008
             this.label1 = new System.Windows.Forms.Label();
             this.txtSQLServerName = new System.Windows.Forms.TextBox();
             this.grpDatabase = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTableName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboDatabase = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btn_OK = new System.Windows.Forms.Button();
-            this.txtTableName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpDatabase.SuspendLayout();
             this.SuspendLayout();
@@ -145,6 +145,23 @@ namespace ArcToSQL2008
             this.grpDatabase.TabIndex = 2;
             this.grpDatabase.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point( 14, 53 );
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size( 79, 13 );
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Export to Table";
+            // 
+            // txtTableName
+            // 
+            this.txtTableName.Location = new System.Drawing.Point( 113, 53 );
+            this.txtTableName.Name = "txtTableName";
+            this.txtTableName.Size = new System.Drawing.Size( 284, 20 );
+            this.txtTableName.TabIndex = 2;
+            this.txtTableName.TextChanged += new System.EventHandler( this.txtTableName_TextChanged );
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -157,6 +174,7 @@ namespace ArcToSQL2008
             // cboDatabase
             // 
             this.cboDatabase.DisplayMember = "Name";
+            this.cboDatabase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDatabase.FormattingEnabled = true;
             this.cboDatabase.Location = new System.Drawing.Point( 113, 19 );
             this.cboDatabase.Name = "cboDatabase";
@@ -185,23 +203,6 @@ namespace ArcToSQL2008
             this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler( this.btn_OK_Click );
-            // 
-            // txtTableName
-            // 
-            this.txtTableName.Location = new System.Drawing.Point( 113, 53 );
-            this.txtTableName.Name = "txtTableName";
-            this.txtTableName.Size = new System.Drawing.Size( 284, 20 );
-            this.txtTableName.TabIndex = 2;
-            this.txtTableName.TextChanged += new System.EventHandler( this.txtTableName_TextChanged );
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point( 14, 53 );
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size( 79, 13 );
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Export to Table";
             // 
             // SmoAdmin
             // 

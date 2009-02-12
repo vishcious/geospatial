@@ -79,6 +79,11 @@ namespace ArcToSQL2008
             {
                 Database db = smoHelper.Server.Databases[ cboDatabase.SelectedValue.ToString() ];
                 ConnectionString = smoHelper.Server.ConnectionContext.ConnectionString + ";Initial Catalog=" + db.Name;
+                if( string.IsNullOrEmpty( txtTableName.Text ) )
+                {
+                    MessageBox.Show("A Table name is required", "Error");
+                    return;
+                }
                 TableName = txtTableName.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
