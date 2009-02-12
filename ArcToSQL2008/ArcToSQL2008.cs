@@ -6,6 +6,7 @@ using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.CatalogUI;
 using System.Windows.Forms;
+using System.ComponentModel;
 using ESRI.ArcGIS.Catalog;
 using ESRI.ArcGIS.Geodatabase;
 using Castle.Windsor;
@@ -88,7 +89,8 @@ namespace ArcToSQL2008
         WindsorContainer container;
         private static readonly log4net.ILog _log = LogManager.GetLogger( typeof( ArcToSQL2008 ) );
         private IApplication m_application;
-        Configuration m_config;
+        //Configuration m_config;
+
         public ArcToSQL2008()
         {
             //
@@ -107,8 +109,8 @@ namespace ArcToSQL2008
                 string bitmapResourceName = GetType().Name + ".bmp";
                 base.m_bitmap = new Bitmap( GetType(), bitmapResourceName );
 
-                string configFileName = Path.GetFileNameWithoutExtension( typeof( ArcToSQL2008 ).Assembly.Location ) + ".config";
-                string basePath = Path.GetDirectoryName( typeof( ArcToSQL2008 ).Assembly.Location );
+                //string configFileName = Path.GetFileNameWithoutExtension( typeof( ArcToSQL2008 ).Assembly.Location ) + ".config";
+                //string basePath = Path.GetDirectoryName( typeof( ArcToSQL2008 ).Assembly.Location );
                 
                 //Configure the log4net component using the configuration file
                 //But I am prefering to configure the log4net component as opposed to reading it from a config file.
@@ -157,13 +159,13 @@ namespace ArcToSQL2008
         {
             RollingFileAppender lAppender = new RollingFileAppender();
             lAppender.Name = "RollingFile";
-            lAppender.File = "ArcToSQL2008.log";
+            lAppender.File = Path.Combine( Path.GetDirectoryName( typeof( ArcToSQL2008 ).Assembly.Location ), "ArcToSQL2008.log");
             lAppender.AppendToFile = true;
             lAppender.RollingStyle = RollingFileAppender.RollingMode.Size;
             lAppender.MaxSizeRollBackups = 10;
             lAppender.MaximumFileSize = "100KB";
             lAppender.StaticLogFileName = true;
-            lAppender.Layout = new log4net.Layout.PatternLayout( "%date %-5level - %message%newline" );
+            lAppender.Layout = new log4net.Layout.PatternLayout( "%newline%newline%date %-5level - %message%newline" );
             lAppender.Threshold = log4net.Core.Level.All;
             lAppender.ActivateOptions();
             return lAppender;
@@ -198,7 +200,7 @@ namespace ArcToSQL2008
         {
             string connectionString = null;
             string tableName = "ArcToSQL2008";
-            
+
             try
             {
                 //m_config = ConfigurationManager.OpenExeConfiguration( typeof( ArcToSQL2008 ).Assembly.Location );
@@ -214,12 +216,19 @@ namespace ArcToSQL2008
                 {
                     return;
                 }
+                dialog.Close();
+                dialog.Dispose();
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                MessageBox.Show( "Error openeing configuration file." + System.Environment.NewLine + ex.ToString());
+                MessageBox.Show( "Error openeing configuration file." + System.Environment.NewLine + ex.ToString() );
             }
 
+            Import( connectionString, tableName );
+        }
+
+        public void Import(string connectionString, string tableName)
+        {
             if( string.IsNullOrEmpty( connectionString ) )
             {
                 MessageBox.Show( "Unable to obtain connection SQL 2008 information.", "Error", MessageBoxButtons.OK );
@@ -321,6 +330,7 @@ namespace ArcToSQL2008
                         }
 
                         shapeFileLayer.Search( null );
+                        string keyFieldName = shapeFileLayer.KeyFieldName;
                         while( shapeFileLayer.MoveNext() )
                         {
                             try
@@ -329,7 +339,8 @@ namespace ArcToSQL2008
                             }
                             catch( Exception ex )
                             {
-                                _log.Error( "An unexpected error occured while adding feature. " + ex.Message, ex );
+                                string msg = ex.Message + " Feature ID:- " + shapeFileLayer.Current.Attributes.GetValue( keyFieldName ).ToString();
+                                _log.Error( msg, ex );
                             }
                         }
 
