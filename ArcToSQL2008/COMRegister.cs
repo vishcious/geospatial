@@ -6,6 +6,7 @@ using System.Configuration.Install;
 using System.Linq;
 using System.IO;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 
 namespace ArcToSQL2008
