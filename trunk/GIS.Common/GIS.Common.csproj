@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D3B82FC9-A8BC-45B0-8FE4-4E435122D23F}</ProjectGuid>
+    <ProjectGuid>{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GIS.FDO</RootNamespace>
-    <AssemblyName>GIS.FDO</AssemblyName>
+    <RootNamespace>GIS.Common</RootNamespace>
+    <AssemblyName>GIS.Common</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,26 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.FDO, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.FDO.Common, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.FDO.Geometry, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Geometry.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.FDO.Providers.SHP.Overrides, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Providers.SHP.Overrides.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.FDO.Spatial, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -65,14 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FDOShpUtil.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GIS.Common\GIS.Common.csproj">
-      <Project>{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}</Project>
-      <Name>GIS.Common</Name>
-    </ProjectReference>
+    <Compile Include="PropertyValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

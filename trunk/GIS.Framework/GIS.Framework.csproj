@@ -109,6 +109,12 @@
     <Compile Include="WKIDRanges.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GIS.Common\GIS.Common.csproj">
+      <Project>{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}</Project>
+      <Name>GIS.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="DataTable\Features\" />
     <Folder Include="DataTable\Layers\" />
   </ItemGroup>
