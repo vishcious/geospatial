@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcToSQL2008", "ArcToSQL200
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ArcToSQL2008Installer", "ArcToSQL2008Installer\ArcToSQL2008Installer.vdproj", "{41585D5E-8C76-4111-B078-B353D3A42F73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIS.Common", "GIS.Common\GIS.Common.csproj", "{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{0B799F3E-2FB1-41F5-89DA-818CF3882C35}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41585D5E-8C76-4111-B078-B353D3A42F73}.Debug|Any CPU.ActiveCfg = Debug
 		{41585D5E-8C76-4111-B078-B353D3A42F73}.Release|Any CPU.ActiveCfg = Release
+		{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

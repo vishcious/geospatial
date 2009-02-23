@@ -31,6 +31,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GeoAPI, Version=1.1.0.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NetTopologySuite\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=1.7.3.16791, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NetTopologySuite\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.FDO, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.FDO.Common, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.FDO.Geometry, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.FDO.Spatial, Version=3.3.8085.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FDO-3.3.1\OSGeo.FDO.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -45,11 +69,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderAttributes.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderFeature.cs" />
+    <Compile Include="Layers\FeatureReader\FDOFeatureReaderLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\" />
-    <Folder Include="Layers\" />
+    <ProjectReference Include="..\GIS.Common\GIS.Common.csproj">
+      <Project>{BFBB935A-7CB3-4CB5-ADB8-A03BF0DA6C05}</Project>
+      <Name>GIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GIS.Framework\GIS.Framework.csproj">
+      <Project>{41862598-4282-440D-8C33-F49D147A1158}</Project>
+      <Name>GIS.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\SQLReader\" />
+    <Folder Include="Layers\SQLReader\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
