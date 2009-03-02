@@ -51,6 +51,38 @@ namespace GIS.Framework.FDO.Features.FeatureReader
                 throw new ArgumentException( "A geometry field was not found on the reader." );
         }
 
+        public string GeometryFieldName
+        {
+            get
+            {
+                return _geometryPropertyDefinition.Name;
+            }
+        }
+
+        public IFeatureReader FeatureReader
+        {
+            get
+            {
+                return _featureReader;
+            }
+        }
+
+        public ClassDefinition FeatureClassDefinition
+        {
+            get
+            {
+                return _classDefinition;
+            }
+        }
+
+        public PropertyDefinitionCollection Fields
+        {
+            get
+            {
+                return _propertyDefinitionCollection;
+            }
+        }
+
         #region IGISFeature Members
 
         public abstract GeoAPI.Geometries.IGeometry Shape
@@ -59,11 +91,22 @@ namespace GIS.Framework.FDO.Features.FeatureReader
             set;
         }
 
-        public static GeoAPI.Geometries.IGeometry Convert( OSGeo.FDO.Geometry.IGeometry geometry )
+        public static GeoAPI.Geometries.IGeometry ConvertTo( OSGeo.FDO.Geometry.IGeometry geometry )
         {
-            GisSharpBlog.NetTopologySuite.IO.WKTReader wktReader = new GisSharpBlog.NetTopologySuite.IO.WKTReader();
-            GeoAPI.Geometries.IGeometry ntsGeometry = wktReader.Read( geometry.Text );
+            //GisSharpBlog.NetTopologySuite.IO.WKTReader wktReader = new GisSharpBlog.NetTopologySuite.IO.WKTReader();
+            //GeoAPI.Geometries.IGeometry ntsGeometry = wktReader.Read( geometry.Text );
+            //return ntsGeometry;
+
+            GisSharpBlog.NetTopologySuite.IO.WKBReader wkbReader = new GisSharpBlog.NetTopologySuite.IO.WKBReader();
+            FgfGeometryFactory geometryFactory = new FgfGeometryFactory();
+            GeoAPI.Geometries.IGeometry ntsGeometry = wkbReader.Read(geometryFactory.GetWkb(geometry));
             return ntsGeometry;
+        }
+
+        public static OSGeo.FDO.Geometry.IGeometry ConvertFrom( GeoAPI.Geometries.IGeometry geometry )
+        {
+            FgfGeometryFactory geometryFactory = new FgfGeometryFactory();
+            return geometryFactory.CreateGeometryFromWkb(geometry.AsBinary());
         }
 
         public static OSGeo.FDO.Geometry.IGeometry GetGeometry( IFeatureReader reader, string name )

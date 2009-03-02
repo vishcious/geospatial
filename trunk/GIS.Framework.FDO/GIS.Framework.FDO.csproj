@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NetTopologySuite\GeoAPI.dll</HintPath>
     </Reference>
+    <Reference Include="Jayrock.Json, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=9586cafbf777a8f5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\JayRock\Jayrock.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NetTopologySuite, Version=1.7.3.16791, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NetTopologySuite\NetTopologySuite.dll</HintPath>
@@ -71,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Features\FeatureReader\FDOFeatureReaderAttributes.cs" />
     <Compile Include="Features\FeatureReader\FDOFeatureReaderFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderPointFeature.cs" />
     <Compile Include="Layers\FeatureReader\FDOFeatureReaderLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
