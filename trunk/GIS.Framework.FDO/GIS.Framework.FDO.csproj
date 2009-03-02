@@ -75,7 +75,13 @@
   <ItemGroup>
     <Compile Include="Features\FeatureReader\FDOFeatureReaderAttributes.cs" />
     <Compile Include="Features\FeatureReader\FDOFeatureReaderFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderLinearRingFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderLinestringFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderMultiLinestringFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderMultiPointFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderMultiPolygonFeature.cs" />
     <Compile Include="Features\FeatureReader\FDOFeatureReaderPointFeature.cs" />
+    <Compile Include="Features\FeatureReader\FDOFeatureReaderPolygonFeature.cs" />
     <Compile Include="Layers\FeatureReader\FDOFeatureReaderLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
