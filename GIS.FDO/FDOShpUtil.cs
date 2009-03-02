@@ -12,12 +12,12 @@ namespace GIS.FDO
 {
     public static class FDOShpUtil
     {
-        public IConnection OpenShapefileConnection( string shpDirectory )
+        public static IConnection OpenShapefileConnection( string shpDirectory )
         {
             return OpenShapefileConnection( "OSGeo.SHP.3.3", shpDirectory );
         }
 
-        public IConnection OpenShapefileConnection( string providerName, string shpDirectory )
+        public static IConnection OpenShapefileConnection( string providerName, string shpDirectory )
         {
             providerName.RequireArgument<string>( "providerName" ).NotNullOrEmpty();
             shpDirectory.RequireArgument<string>( "shpDirectory" ).NotNullOrEmpty();

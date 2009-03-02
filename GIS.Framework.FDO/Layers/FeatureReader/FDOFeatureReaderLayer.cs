@@ -7,6 +7,7 @@ using GIS.Common;
 using OSGeo.FDO.Connections;
 using OSGeo.FDO.Commands;
 using OSGeo.FDO.Filter;
+using Jayrock.Json;
 
 namespace GIS.Framework.FDO.Layers.FeatureReader
 {
@@ -18,7 +19,7 @@ namespace GIS.Framework.FDO.Layers.FeatureReader
         IFeatureReader _featureReader;
         ISelect _selectCommand;
 
-        public FDOFeatureReaderLayer( IConnection connection, string featureClassName, featureReader, string layerName, string keyFieldName )
+        public FDOFeatureReaderLayer( IConnection connection, string featureClassName, string layerName, string keyFieldName )
         {
             connection.RequireArgument<IConnection>( "connection" ).NotNull<IConnection>();
             layerName.RequireArgument<string>( "layerName" ).NotNullOrEmpty();
@@ -73,7 +74,7 @@ namespace GIS.Framework.FDO.Layers.FeatureReader
 
         #region IGISJSONSerializable Members
 
-        public void ToJSON( Jayrock.Json.JsonTextWriter jwriter )
+        public void ToJSON( JsonTextWriter jwriter )
         {
             throw new NotImplementedException();
         }
